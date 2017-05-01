@@ -1,6 +1,6 @@
 sequelize:
   dialect: "sqlite"
-  storage: ['..','db.sqlite']
+  storage: ['..','tmp','db.sqlite']
   collections: ['users', 'events']
 
 google:

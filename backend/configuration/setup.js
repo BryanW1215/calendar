@@ -17,6 +17,7 @@ async function createDirectories(){
 
     global.directories = {
         userPics: path.join(__dirname, '..', 'public', 'images', 'users'),
+        tmp: path.join(__dirname, '..', 'tmp')
     };
     return Promise.all(_.map(global.directories,(dir)=>{
         isDebug && fs.existsSync(dir) && rmDir(dir);
