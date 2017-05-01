@@ -1,0 +1,15 @@
+@import '../node_modules/bootstrap/dist/css/bootstrap.css';
+@import '../node_modules/ng2-toasty/style-bootstrap.css';
+@import "../node_modules/fullcalendar/dist/fullcalendar.min.css";
+@import "../node_modules/bootstrap-timepicker/css/bootstrap-timepicker.css";
+@import "../node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css";
+
+body{
+  font-family: 'Open Sans', sans-serif;
+  background: url('/assets/img/backgrounds/edges.png');
+  height: 100%;
+  width: 100%;
+  color: #444444;
+}
+
+

@@ -1,0 +1,19 @@
+{
+  "apps": [
+    {
+      "name": "app",
+      "script": "/home/ubuntu/calendar/backend/app.js",
+      "node_args": [],
+      "exec_mode": "cluster",
+      "instances": 1,
+      "watch": false,
+      "merge_logs": true,
+      "cwd": "/home/ubuntu/calendar/backend/",
+      "env": {
+        "NODE_ENV": "production",
+        "HOME": "/home/ubuntu/calendar/backend",
+        "NODE_CONFIG_DIR": "/home/ubuntu/calendar/backend/config"
+      }
+    }
+  ]
+}

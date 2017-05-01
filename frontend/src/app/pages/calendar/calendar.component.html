@@ -1,0 +1,25 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-8">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <span class="left">
+              Calendar
+            </span>
+            <span class="right label label-primary btn-add-event" (click)="AddEvent()">
+              Add Event
+            </span>
+          </h3>
+        </div>
+        <div class="panel-body">
+          <div class="full-calendar"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-4">
+      <app-event *ngIf="eventData" [data]="eventData" [on-update]="onEventUpdate"></app-event>
+    </div>
+  </div>
+</div>

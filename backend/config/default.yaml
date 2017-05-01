@@ -1,0 +1,14 @@
+sequelize:
+  dialect: "sqlite"
+  storage: ['..','db.sqlite']
+  collections: ['users', 'events']
+
+google:
+  clientId: '1075327250117-5igphergsd7s752l0vj7p3rcecl34mfm.apps.googleusercontent.com'
+  secret: 'SLKnPTgUMQwJ9u_yktLrN3Ay'
+  userInfoUrl: 'https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token='
+
+server:
+  port: 3000
+  sessionExpiration: 15
+  url: 'http://localhost:3000/'

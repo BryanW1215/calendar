@@ -1,0 +1,51 @@
+.list-group {
+  margin-bottom: 15px;
+  .list-group-item {
+    padding: 5px;
+    label {
+      margin: 0;
+    }
+  }
+}
+
+.col-picture {
+  text-align: right;
+  img {
+    box-sizing: border-box;
+    max-height: 63px;
+    border-radius: 5px;
+    border-color: #dddddd;
+  }
+}
+
+.panel-heading {
+  padding: 5px;
+  .panel-title {
+
+    overflow: hidden;
+    .left {
+      float: left;
+      padding: 3px;
+    }
+    .right {
+      float: right;
+    }
+    .btn-upload-picture {
+      display: inline;
+      padding:5px;
+      cursor: pointer;
+    }
+  }
+}
+.disclaimer{
+  text-align: center;
+  font-style:italic;
+  color: #777777;
+  font-size: 12px;
+}
+.panel{
+  width: 800px;
+  max-width: calc(100% - 40px);
+  margin: auto;
+
+}

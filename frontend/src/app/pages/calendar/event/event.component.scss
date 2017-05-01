@@ -1,0 +1,50 @@
+.row {
+  margin-bottom: 10px;
+  label {
+    padding: 7px
+  }
+  datetime {
+    /deep/ .input-group {
+      float: left;
+      box-sizing: border-box;
+      width: calc(50% - 5px);
+      margin: 0 0 0 10px;
+      &:first-child {
+        margin: 0
+      }
+    }
+  }
+  &.controls {
+    margin-top: 20px;
+    .btn {
+
+      width: 200px;
+    }
+  }
+  :last-child {
+    margin-bottom: 0;
+  }
+}
+
+.panel {
+  width: 550px;
+  .panel-heading {
+    padding: 5px;
+    .panel-title {
+
+      overflow: hidden;
+      .left {
+        float: left;
+        padding: 3px;
+      }
+      .right {
+        float: right;
+      }
+      .btn-close {
+        display: inline;
+        padding: 5px;
+        cursor: pointer;
+      }
+    }
+  }
+}

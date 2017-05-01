@@ -1,0 +1,39 @@
+.list-group {
+  margin: 0;
+  .list-group-item {
+    font-size: 14px;
+    cursor: pointer;
+    img {
+      max-width: 30px;
+      max-height: 30px;
+      margin-right: 10px;
+    }
+
+  }
+
+}
+.panel{
+  width: 650px;
+  max-width: calc(100% - 40px);
+  margin: auto;
+
+}
+.panel-heading {
+  padding: 5px;
+  .panel-title {
+
+    overflow: hidden;
+    .left {
+      float: left;
+      padding: 3px;
+    }
+    .right {
+      float: right;
+    }
+    .btn-upload-picture {
+      display: inline;
+      padding:5px;
+      cursor: pointer;
+    }
+  }
+}

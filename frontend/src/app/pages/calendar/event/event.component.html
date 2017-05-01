@@ -1,0 +1,48 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">
+            <span class="left">
+                    <span *ngIf="event">Event</span>
+                    <span *ngIf="!event">No event selected</span>
+            </span>
+      <span class="right label label-default btn-close" (click)="Close()">
+              Close
+            </span>
+    </h3>
+  </div>
+  <form #form="ngForm">
+    <div class="panel-body" *ngIf="event">
+      <div class="row">
+        <div class="col-xs-1">
+          <label>Title</label>
+        </div>
+        <div class="col-xs-11">
+          <input type="text" class="form-control" [(ngModel)]="event.title" name="title" required>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-1">
+          <label>Start</label>
+        </div>
+        <div class="col-xs-11">
+          <datetime [(ngModel)]="event.start" name="start" required></datetime>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-1">
+          <label>End</label>
+        </div>
+        <div class="col-xs-11">
+          <datetime [(ngModel)]="event.end" name="end" required></datetime>
+        </div>
+      </div>
+      <div class="row controls">
+        <div class="col-xs-1"></div>
+        <div class="col-xs-11">
+          <div [ngClass]="{disabled: !isValid}" class="btn btn-primary pull-right" (click)="Save()">Save</div>
+          <div *ngIf="event.id" class="btn btn-danger pull-left" (click)="Delete()">Delete</div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

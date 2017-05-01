@@ -1,0 +1,40 @@
+<div class="container-fluid">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+            <span class="left">
+              Account
+            </span>
+        <span class="right label label-primary btn-upload-picture" file-upload fu-accept="image/*"
+              fu-path="images/userpics" [fu-success]="PictureUploaded">
+              Upload Custom Picture
+            </span>
+      </h3>
+    </div>
+    <div *ngIf="user" class="panel-body">
+      <div class="row">
+        <div class="col-xs-10">
+          <ul class="list-group">
+            <li class="list-group-item">
+              <label>Name:</label> {{user.first_name}} {{user.last_name}}
+            </li>
+            <li class="list-group-item">
+              <label>Email:</label> {{user.email}}
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-xs-2 col-picture">
+          <img [src]="user.picture">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 disclaimer">
+          Uploading custom user picture will not overwrite your google account picture.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+

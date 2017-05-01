@@ -1,0 +1,25 @@
+.panel{
+  width: 900px;
+  margin: auto;
+  max-width: calc(100% - 20px);
+
+}
+.panel-heading {
+  padding: 5px;
+  .panel-title {
+
+    overflow: hidden;
+    .left {
+      float: left;
+      padding: 3px;
+    }
+    .right {
+      float: right;
+    }
+    .btn-add-event {
+      display: inline;
+      padding:5px;
+      cursor: pointer;
+    }
+  }
+}
