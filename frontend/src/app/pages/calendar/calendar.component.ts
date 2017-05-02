@@ -23,11 +23,13 @@ export class CalendarComponent implements AfterViewInit, OnInit {
   private calendar: any;
 
   constructor(private elemRef: ElementRef, private ngRedux: NgRedux<IAppState>, private usersService: UsersService, private cdrRef: ChangeDetectorRef) {
-
+    this.AddEvent = this.AddEvent.bind(this);
+    this.onEventSelected = this.onEventSelected.bind(this);
+    this.onEventUpdate = this.onEventUpdate.bind(this);
   }
 
   ngOnInit() {
-    this.cdrRef.detectChanges();  // wasn't detecting changes following redirect from google login.
+
   }
 
   ngAfterViewInit() {
@@ -47,16 +49,17 @@ export class CalendarComponent implements AfterViewInit, OnInit {
     })
   }
 
-  public AddEvent() {
-    this.eventData = {id: environment.blankId};
+  public AddEvent()  {
+    this.eventData = {id: environment.blankId, isNew: true};
     this.calEvent = null;
+    this.cdrRef.detectChanges();
+  };
 
-  }
-
-  public onEventUpdate: Function = (event) => {
+  public onEventUpdate(event) {
     this.eventData = null;
     let calEvent = this.calEvent;
     this.calEvent = null;
+    this.cdrRef.detectChanges();
     if (event === 'close') {
       return;
     }
@@ -71,10 +74,9 @@ export class CalendarComponent implements AfterViewInit, OnInit {
 
   };
 
-  public onEventSelected: Function = (event) => {
+  public onEventSelected(event)  {
     this.calEvent = event;
     this.eventData = {id: event.id, title: event.title, start: event.start.toDate(), end: event.end.toDate()};
-
-
+    this.cdrRef.detectChanges();
   }
 }

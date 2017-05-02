@@ -9,7 +9,7 @@ async function run() {
         dbConfig = require('./configuration/db'),
         {onListening, onError, FourOhFour, FiveHundred} = require('./shared/server');
 
-    require('./configuration/setup')();
+    require('./configuration/setup')(true);
 
     let app = express();
 

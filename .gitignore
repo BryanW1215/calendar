@@ -5,3 +5,4 @@
 
 /backend/db.sqlite
 /backend/public/images/users/
+/backend/tmp/db.sqlite

@@ -6,14 +6,14 @@ let fs = require('fs'),
     {rmDir} = require('../shared/utilities'),
     mkdirp = require('mkdirp');
 
-let isDebug = !process.env.NODE_ENV || process.env.NODE_ENV === 'development';
+
 function pm2RestartCron() {
     setTimeout(function worker() {
         pm2.restart('app', function() {});
     }, 24 * 60 * 60 *1000);
 }
 
-async function createDirectories(){
+async function createDirectories(isDebug){
 
     global.directories = {
         userPics: path.join(__dirname, '..', 'public', 'images', 'users'),
@@ -34,9 +34,10 @@ function setUrls(){
         userPics: `${serverUrl}images/users/`
     };
 }
-module.exports = async function () {
+module.exports = async function (isDebug) {
+    isDebug = isDebug  || (!process.env.NODE_ENV || process.env.NODE_ENV === 'development');
     pm2RestartCron();
-    await createDirectories();
+    await createDirectories(isDebug);
     !isDebug && clearStorage();
     setUrls();
 };

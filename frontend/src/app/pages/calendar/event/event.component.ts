@@ -6,6 +6,7 @@ import {EventsService} from "../../../services/api/eventsService";
 import {IAppState} from "../../../store/index";
 import {NgRedux} from "ng2-redux";
 import {environment} from 'environments/environment';
+import * as _ from 'lodash';
 @Component({
   selector: 'app-event',
   templateUrl: './event.component.html',
@@ -34,12 +35,15 @@ export class EventComponent implements OnInit, OnDestroy{
     }
     this.isValid = this.isValid && moment(data.start) <= moment(data.end);
   }
+
   Save() {
     if(!this.isValid){
       return;
     }
     this.event.user_id = this.ngRedux.getState().session.user.id;
-    this.eventsService.save(this.event).subscribe((event)=>this.onUpdate(event));
+    let event = _.clone(this.event);
+    _.assignIn(event, {start: this.normalizeDate(event.start), end: this.normalizeDate(event.end)});
+    this.eventsService.save(event).subscribe((event)=>this.onUpdate(event));
   }
   Close() {
     this.onUpdate('close');
@@ -50,5 +54,9 @@ export class EventComponent implements OnInit, OnDestroy{
     }
     this.eventsService.delete(this.event).subscribe((event)=>this.onUpdate());
   }
-
+  private normalizeDate(date){
+    let timezoneOffset = (new Date()).getTimezoneOffset();
+    let utc = date.valueOf() - (timezoneOffset * 60 * 1000);
+    return new Date(utc);
+  }
 }

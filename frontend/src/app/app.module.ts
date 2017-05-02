@@ -16,7 +16,6 @@ import {UnauthenticatedRouteGaurd} from './misc/unauthenticated.gaurd';
 import {SessionService} from './services/session.service';
 import {ErrorService} from './services/error.service';
 
-import {LoaderComponent} from './shared/loader/loader.component';
 
 import {AuthenticatedHttpService} from './services/authenticated.http.service';
 
@@ -36,7 +35,6 @@ import { EventComponent } from './pages/calendar/event/event.component';
 @NgModule({
   declarations: [
     AppComponent,
-    LoaderComponent,
     FileuploadDirective,
     SignonComponent,
     UsersComponent,
