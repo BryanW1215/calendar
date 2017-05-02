@@ -1,4 +1,4 @@
-import {AfterViewChecked, AfterViewInit, Component, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {AfterViewChecked, AfterViewInit, Component, Input, OnDestroy, OnInit, ViewChild, ChangeDetectorRef} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {Subscription} from "rxjs/Subscription";
 import * as moment from 'moment';
@@ -19,7 +19,7 @@ export class EventComponent implements OnInit, OnDestroy{
 
   private isValid: boolean = false;
   private formSubscription: Subscription;
-  constructor(private ngRedux:NgRedux<IAppState>, private eventsService: EventsService) { }
+  constructor(private ngRedux:NgRedux<IAppState>, private eventsService: EventsService, private cdrRef: ChangeDetectorRef) { }
 
   ngOnInit(){
     this.formSubscription = this.form.valueChanges.subscribe((data) => this.checkValidity(data));
@@ -30,6 +30,7 @@ export class EventComponent implements OnInit, OnDestroy{
   }
   checkValidity(data){
     this.isValid = this.form.valid;
+    this.cdrRef.detectChanges();
     if(!this.isValid){
       return;
     }
@@ -42,7 +43,8 @@ export class EventComponent implements OnInit, OnDestroy{
     }
     this.event.user_id = this.ngRedux.getState().session.user.id;
     let event = _.clone(this.event);
-    _.assignIn(event, {start: this.normalizeDate(event.start), end: this.normalizeDate(event.end)});
+    event.id === environment.blankId && _.assignIn(event, {start: this.normalizeDate(event.start), end: this.normalizeDate(event.end)});
+    
     this.eventsService.save(event).subscribe((event)=>this.onUpdate(event));
   }
   Close() {

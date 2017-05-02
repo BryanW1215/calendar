@@ -73,10 +73,14 @@ export class CalendarComponent implements AfterViewInit, OnInit {
     this.calendar('updateEvent', calEvent);
 
   };
-
+  private normalizeDate(mDate){
+    let timezoneOffset = (new Date()).getTimezoneOffset();
+    let utc = mDate.toDate().valueOf() + (timezoneOffset * 60 * 1000);
+    return new Date(utc);
+  }
   public onEventSelected(event)  {
     this.calEvent = event;
-    this.eventData = {id: event.id, title: event.title, start: event.start.toDate(), end: event.end.toDate()};
+    this.eventData = {id: event.id, title: event.title, start: this.normalizeDate(event.start), end: this.normalizeDate(event.end)};
     this.cdrRef.detectChanges();
   }
 }
