@@ -2,10 +2,10 @@
 cd ./frontend
 case $1 in
     "production")
-        ng build --prod --environment=production --target=production --output-hashing=none
+        ng build --prod --environment=prod --target=production --output-hashing=none
     ;;
     "development")
-        ng build --environment=development --target=development --output-hashing=none
+        ng build --environment=dev --target=development --output-hashing=none
     ;;
     "serve")
         ng serve
