@@ -5,7 +5,7 @@ import {environment} from '../../environments/environment';
 import {Http} from "@angular/http";
 import {Router} from "@angular/router";
 import {Subscription} from "rxjs/Subscription";
-
+import * as _ from 'lodash'
 /**
  * Action creators in Angular 2. We may as well adopt a more
  * class-based approach to satisfy Angular 2's OOP idiom. It
@@ -28,6 +28,7 @@ export class SessionService {
 
     this.serviceUrl = environment.apiUrl + 'session/';
     this.initGAPI().then(() => this.bindSessionState());
+    this.syncSessions = _.debounce(this.syncSessions, 1000);
   }
 
   private bindSessionState() {

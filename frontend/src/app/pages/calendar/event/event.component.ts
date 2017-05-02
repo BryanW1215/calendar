@@ -44,7 +44,7 @@ export class EventComponent implements OnInit, OnDestroy{
     this.event.user_id = this.ngRedux.getState().session.user.id;
     let event = _.clone(this.event);
     event.id === environment.blankId && _.assignIn(event, {start: this.normalizeDate(event.start), end: this.normalizeDate(event.end)});
-    
+
     this.eventsService.save(event).subscribe((event)=>this.onUpdate(event));
   }
   Close() {
